@@ -14,7 +14,7 @@
  * if it should be true if your person object is at least 16 years old
  */
 
-/* Create a variable called `dataTypes` with atleast 1 of every data type;
+/* Create an array called `dataTypes` with atleast 1 of every data type;
  * (there are 6 different data types);
  */
 
