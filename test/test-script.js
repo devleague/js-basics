@@ -38,15 +38,15 @@ describe("Main", function() {
     });
   });
 
-  describe("#greetings", function() {
+  describe("#greet", function() {
 
     it('should be a function', function() {
-      (typeof window.greetings).should.equal('function');
+      (typeof window.greet).should.equal('function');
     });
 
     it("should print a greeting", function() {
       var name = "Dev League";
-      greetings(name);
+      greet(name);
 
       sinon.assert.notCalled(console.error);
       sinon.assert.calledOnce(console.log);
