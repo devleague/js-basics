@@ -42,7 +42,7 @@ describe('Main', function() {
       expect(GLOBAL.person).to.exist;
       (typeof GLOBAL.person).should.equal('object');
       (GLOBAL.person).should.have.property('name');
-      (GLOBAL.person.name).should.equal(name);
+      (GLOBAL.person.name).should.equal(myName);
     });
   });
 
