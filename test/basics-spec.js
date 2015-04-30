@@ -7,7 +7,7 @@ var should = chai.should();
 
 // load basics.js into new VM
 var basicsFile = fs.readFileSync(process.cwd() + '/basics.js', { encoding: 'UTF-8' });
-var brah = vm.runInThisContext(basicsFile); // file runs and it's contents has access to GLOBAL
+vm.runInThisContext(basicsFile); // file runs and it's contents has access to GLOBAL
 
 describe('Main', function() {
   var sandbox;
