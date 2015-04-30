@@ -1,13 +1,20 @@
-var vm = require('vm');
-var fs = require('fs');
-var sinon = require('sinon');
-var chai = require('chai');
+var window = window || undefined;
+if (window) {
+  GLOBAL = window;
+} else {
+  var vm = require('vm');
+  var fs = require('fs');
+  var sinon = require('sinon');
+  var chai = require('chai');
+
+  var basicsFile = fs.readFileSync(process.cwd() + '/basics.js', { encoding: 'UTF-8' });
+  vm.runInThisContext(basicsFile); // file runs and it's contents has access to GLOBAL
+}
+
 var expect = chai.expect;
 var should = chai.should();
 
 // load basics.js into new VM
-var basicsFile = fs.readFileSync(process.cwd() + '/basics.js', { encoding: 'UTF-8' });
-vm.runInThisContext(basicsFile); // file runs and it's contents has access to GLOBAL
 
 describe('Main', function() {
   var sandbox;
@@ -27,9 +34,9 @@ describe('Main', function() {
   });
 
   describe('person', function() {
-    it('should have a name variable', function() {
-      expect(GLOBAL.name).to.exist;
-      (typeof GLOBAL.name).should.equal('string');
+    it('should have a variable called `myName`', function() {
+      expect(GLOBAL.myName).to.exist;
+      (typeof GLOBAL.myName).should.equal('string');
     });
     it('should have a person object with the same name', function() {
       expect(GLOBAL.person).to.exist;
