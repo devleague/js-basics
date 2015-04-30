@@ -1,9 +1,13 @@
-var window = require('./../basics.js'); // load work file into globalspace for tests
-
+var vm = require('vm');
+var fs = require('fs');
 var sinon = require('sinon');
 var chai = require('chai');
 var expect = chai.expect;
 var should = chai.should();
+
+// load basics.js into new VM
+var basicsFile = fs.readFileSync(process.cwd() + '/basics.js', { encoding: 'UTF-8' });
+var brah = vm.runInThisContext(basicsFile); // file runs and it's contents has access to GLOBAL
 
 describe("Main", function() {
   var sandbox;
@@ -24,29 +28,29 @@ describe("Main", function() {
 
   describe('person', function() {
     it('should have a name variable', function() {
-      expect(window.name).to.exist;
-      (typeof window.name).should.equal('string');
+      expect(GLOBAL.name).to.exist;
+      (typeof GLOBAL.name).should.equal('string');
     });
     it('should have a person object with the same name', function() {
-      expect(window.person).to.exist;
-      (typeof window.person).should.equal('object');
-      (window.person).should.have.property('name');
-      (window.person.name).should.equal(name);
+      expect(GLOBAL.person).to.exist;
+      (typeof GLOBAL.person).should.equal('object');
+      (GLOBAL.person).should.have.property('name');
+      (GLOBAL.person.name).should.equal(name);
     });
   });
 
   describe('canDrive', function() {
     it ('should be true if `person` is atleast 16 years old', function() {
-      expect(window.canDrive).to.exist;
-      (typeof window.canDrive).should.equal('boolean');
-      window.canDrive.should.equal(window.person.age >= 16);
+      expect(GLOBAL.canDrive).to.exist;
+      (typeof GLOBAL.canDrive).should.equal('boolean');
+      GLOBAL.canDrive.should.equal(GLOBAL.person.age >= 16);
     });
   });
 
   describe("#greet", function() {
 
     it('should be a function', function() {
-      (typeof window.greet).should.equal('function');
+      (typeof GLOBAL.greet).should.equal('function');
     });
 
     it("should print a greeting", function() {
@@ -61,15 +65,15 @@ describe("Main", function() {
 
   describe('dataTypes', function() {
     it('should be an array', function() {
-      expect(window.dataTypes).to.exist;
-      (window.dataTypes.constructor.name).should.equal('Array');
+      expect(GLOBAL.dataTypes).to.exist;
+      (GLOBAL.dataTypes.constructor.name).should.equal('Array');
       var types = [];
-      for (var i = 0; i < window.dataTypes.length; i++) {
-        if (window.dataTypes[i] === null) {
+      for (var i = 0; i < GLOBAL.dataTypes.length; i++) {
+        if (GLOBAL.dataTypes[i] === null) {
           types.push(null);
         }
         else {
-          types.push(typeof window.dataTypes[i]);
+          types.push(typeof GLOBAL.dataTypes[i]);
         }
       }
       types.should.include('string');
@@ -81,23 +85,23 @@ describe("Main", function() {
     });
   });
 
-  describe('dog object', function() {
+  describe('dog object literal', function() {
     // var spot = new Dog('Spot');
     // it('should be a function', function() {
-    //   (typeof window.Dog).should.equal('object');
-    //   expect(window.Dog).to.exist;
+    //   (typeof GLOBAL.Dog).should.equal('object');
+    //   expect(GLOBAL.Dog).to.exist;
     // });
-    it('should create a dog object', function() {
-      (typeof window.dog).should.equal('object');
-      expect(window.dog).to.exist;
+    it('should be an object', function() {
+      GLOBAL.dog.should.be.an('object');
+      expect(GLOBAL.dog).to.exist;
     });
-    it ('should have a name', function() {
-      (typeof window.dog.name).should.equal('string');
-      window.dog.name.should.equal('Spot');
+    it ('should have a name property', function() {
+      (typeof GLOBAL.dog.name).should.equal('string');
+      GLOBAL.dog.name.should.equal('Spot');
     });
-    it('should be able to bark', function() {
+    it('should be able to bark by calling the .bark() function', function() {
       (typeof dog.bark).should.equal('function');
-      window.dog.bark();
+      GLOBAL.dog.bark();
       sinon.assert.calledOnce(console.log);
     });
   });
