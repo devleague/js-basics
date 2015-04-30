@@ -9,7 +9,7 @@ var should = chai.should();
 var basicsFile = fs.readFileSync(process.cwd() + '/basics.js', { encoding: 'UTF-8' });
 var brah = vm.runInThisContext(basicsFile); // file runs and it's contents has access to GLOBAL
 
-describe("Main", function() {
+describe('Main', function() {
   var sandbox;
 
   beforeEach(function() {
@@ -17,8 +17,8 @@ describe("Main", function() {
     sandbox = sinon.sandbox.create();
 
     // stub some console methods
-    sandbox.stub(console, "log");
-    sandbox.stub(console, "error");
+    sandbox.stub(console, 'log');
+    sandbox.stub(console, 'error');
   });
 
   afterEach(function() {
@@ -47,19 +47,19 @@ describe("Main", function() {
     });
   });
 
-  describe("#greet", function() {
+  describe('#greet', function() {
 
     it('should be a function', function() {
       (typeof GLOBAL.greet).should.equal('function');
     });
 
-    it("should print a greeting", function() {
-      var name = "Dev League";
+    it('should print a greeting', function() {
+      var name = 'Dev League';
       greet(name);
 
       sinon.assert.notCalled(console.error);
       sinon.assert.calledOnce(console.log);
-      sinon.assert.calledWithExactly(console.log, "Hello, my name is " + name);
+      sinon.assert.calledWithExactly(console.log, 'Hello, my name is ' + name);
     });
   });
 
