@@ -18,7 +18,7 @@
  * (there are 6 different data types);
  */
 
-/* Create a Dog object using the `new` constructor.
+/* Create a Dog object
  * it should have a `bark` function that makes your dog bark!
- * It should also have a name attribute.
+ * It should also have a name attribute with the value of 'Spot'
  */
