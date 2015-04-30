@@ -1,5 +1,10 @@
+var window = require('./../basics.js'); // load work file into globalspace for tests
+
+var sinon = require('sinon');
+var chai = require('chai');
 var expect = chai.expect;
 var should = chai.should();
+
 describe("Main", function() {
   var sandbox;
 
@@ -8,8 +13,8 @@ describe("Main", function() {
     sandbox = sinon.sandbox.create();
 
     // stub some console methods
-    sandbox.stub(window.console, "log");
-    sandbox.stub(window.console, "error");
+    sandbox.stub(console, "log");
+    sandbox.stub(console, "error");
   });
 
   afterEach(function() {
@@ -76,22 +81,23 @@ describe("Main", function() {
     });
   });
 
-  describe('#Dog', function() {
-    var spot = new Dog('Spot');
-    it('should be a function', function() {
-      (typeof window.Dog).should.equal('function');
-      expect(window.Dog).to.exist;
-    });
+  describe('dog object', function() {
+    // var spot = new Dog('Spot');
+    // it('should be a function', function() {
+    //   (typeof window.Dog).should.equal('object');
+    //   expect(window.Dog).to.exist;
+    // });
     it('should create a dog object', function() {
-      (typeof spot).should.equal('object');
+      (typeof window.dog).should.equal('object');
+      expect(window.dog).to.exist;
     });
     it ('should have a name', function() {
-      (typeof spot.name).should.equal('string');
-      spot.name.should.equal('Spot');
+      (typeof window.dog.name).should.equal('string');
+      window.dog.name.should.equal('Spot');
     });
     it('should be able to bark', function() {
-      (typeof spot.bark).should.equal('function');
-      spot.bark();
+      (typeof dog.bark).should.equal('function');
+      window.dog.bark();
       sinon.assert.calledOnce(console.log);
     });
   });

@@ -1,0 +1,27 @@
+{
+  "name": "js-basics",
+  "version": "0.0.2",
+  "description": "an exercise focused on some basics of javascript",
+  "main": "basics.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha -R spec ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devleague/js-basics"
+  },
+  "author": "Dev League LLC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devleague/js-basics/issues"
+  },
+  "homepage": "https://github.com/devleague/js-basics",
+  "dependencies": {
+    "chai": "^2.3.0",
+    "mocha": "^2.2.4",
+    "sinon": "^1.14.1"
+  }
+}
