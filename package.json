@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha -R spec ./test"
+    "test": "./node_modules/.bin/karma start --single-run --no-auto-watch --browsers PhantomJS"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,15 @@
     "chai": "^2.3.0",
     "mocha": "^2.2.4",
     "sinon": "^1.14.1"
+  },
+  "devDependencies": {
+    "karma": "^0.13.14",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^0.2.0",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-sinon": "^1.0.4",
+    "karma-sinon-chai": "^1.1.0",
+    "phantomjs": "^1.9.18",
+    "sinon-chai": "^2.8.0"
   }
 }
