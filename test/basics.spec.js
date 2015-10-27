@@ -1,19 +1,3 @@
-var window = window || undefined;
-
-if ( !window ) {
-  GLOBAL = window;
-
-  var vm = require( 'vm' );
-  var fs = require( 'fs' );
-  var sinon = require( 'sinon' );
-  var chai = require( 'chai' );
-
-  var basicsFile = fs.readFileSync( process.cwd() + '/basics.js', { encoding: 'UTF-8' });
-
-  // file runs and it's contents has access to GLOBAL
-  vm.runInThisContext( basicsFile );
-}
-
 var expect = chai.expect;
 var should = chai.should();
 
@@ -36,6 +20,7 @@ describe( 'Main', function() {
     sandbox.restore();
   });
 
+<<<<<<< HEAD:test/basics-spec.js
   describe( 'person', function() {
     it( 'should have a variable called `myName`', function() {
       expect( myName ).to.exist;
@@ -55,13 +40,38 @@ describe( 'Main', function() {
       expect( canDrive ).to.exist;
       ( typeof canDrive ).should.equal( 'boolean' );
       canDrive.should.equal( person.age >= 16 );
+=======
+  describe('person', function() {
+    it('should have a variable called `myName`', function() {
+      expect(myName).to.exist;
+      (typeof myName).should.equal('string');
+    });
+    it('should have a person object with the same name', function() {
+      expect(person).to.exist;
+      (typeof person).should.equal('object');
+      (person).should.have.property('name');
+      (person.name).should.equal(myName);
+    });
+  });
+
+  describe('canDrive', function() {
+    it ('should be true if `person` is atleast 16 years old', function() {
+      expect(canDrive).to.exist;
+      (typeof canDrive).should.equal('boolean');
+      canDrive.should.equal(person.age >= 16);
+>>>>>>> e3fc8a55a29f6d67a9ae95cfca681bf5009aa80e:test/basics.spec.js
     });
   });
 
   describe( '#greet', function() {
 
+<<<<<<< HEAD:test/basics-spec.js
     it( 'should be a function', function() {
       ( typeof greet ).should.equal( 'function' );
+=======
+    it('should be a function', function() {
+      (typeof greet).should.equal('function');
+>>>>>>> e3fc8a55a29f6d67a9ae95cfca681bf5009aa80e:test/basics.spec.js
     });
 
     it( 'should print a greeting', function() {
@@ -74,6 +84,7 @@ describe( 'Main', function() {
     });
   });
 
+<<<<<<< HEAD:test/basics-spec.js
   describe( 'dataTypes', function() {
     it( 'should be an array', function() {
       expect( dataTypes ).to.exist;
@@ -85,6 +96,19 @@ describe( 'Main', function() {
         }
         else {
           types.push( typeof dataTypes[i] );
+=======
+  describe('dataTypes', function() {
+    it('should be an array', function() {
+      expect(dataTypes).to.exist;
+      (dataTypes.constructor.name).should.equal('Array');
+      var types = [];
+      for (var i = 0; i < dataTypes.length; i++) {
+        if (dataTypes[i] === null) {
+          types.push(null);
+        }
+        else {
+          types.push(typeof dataTypes[i]);
+>>>>>>> e3fc8a55a29f6d67a9ae95cfca681bf5009aa80e:test/basics.spec.js
         }
       }
 
@@ -103,6 +127,7 @@ describe( 'Main', function() {
     //   (typeof Dog).should.equal('object');
     //   expect(Dog).to.exist;
     // });
+<<<<<<< HEAD:test/basics-spec.js
     it( 'should be an object', function() {
       dog.should.be.an( 'object' );
       expect( dog ).to.exist;
@@ -117,6 +142,20 @@ describe( 'Main', function() {
       ( typeof dog.bark ).should.equal( 'function' );
       dog.bark();
       sinon.assert.calledOnce( console.log );
+=======
+    it('should be an object', function() {
+      dog.should.be.an('object');
+      expect(dog).to.exist;
+    });
+    it ('should have a name property', function() {
+      (typeof dog.name).should.equal('string');
+      dog.name.should.equal('Spot');
+    });
+    it('should be able to bark by calling the .bark() function', function() {
+      (typeof dog.bark).should.equal('function');
+      dog.bark();
+      sinon.assert.calledOnce(console.log);
+>>>>>>> e3fc8a55a29f6d67a9ae95cfca681bf5009aa80e:test/basics.spec.js
     });
   });
 });
