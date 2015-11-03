@@ -47,6 +47,8 @@ describe( 'Main', function() {
       ( typeof person ).should.equal( 'object' );
       ( person ).should.have.property( 'name' );
       ( person.name ).should.equal( myName );
+      ( person ).should.have.property( 'age' );
+      ( person.age ).should.be.a( 'number' );
     });
   });
 
