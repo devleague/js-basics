@@ -31,6 +31,10 @@ describe( 'Main', function() {
       (person).should.have.property('name');
       (person.name).should.equal(myName);
     });
+    it('should have an age property that is a number', function() {
+      ( person ).should.have.property( 'age' );
+      ( person.age ).should.be.a( 'number' );
+    });
   });
 
   describe('canDrive', function() {
