@@ -85,12 +85,6 @@ describe( 'Main', function() {
   });
 
   describe( 'dog object literal', function() {
-    // var spot = new Dog('Spot');
-    // it('should be a function', function() {
-    //   (typeof Dog).should.equal('object');
-    //   expect(Dog).to.exist;
-    // });
-
     it('should be an object', function() {
       dog.should.be.an('object');
       expect(dog).to.exist;
@@ -99,7 +93,7 @@ describe( 'Main', function() {
       (typeof dog.name).should.equal('string');
       dog.name.should.equal('Spot');
     });
-    it('should be able to bark by calling the .bark() function', function() {
+    it('should be able to bark by calling the `bark` method', function() {
       (typeof dog.bark).should.equal('function');
       dog.bark();
       sinon.assert.calledOnce(console.log);
