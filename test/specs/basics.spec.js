@@ -1,7 +1,14 @@
+var chai = require('chai');
 var expect = chai.expect;
 var should = chai.should();
 
-// load basics.js into new VM
+var sinon = require('sinon');
+
+var vm = require("vm");
+var fs = require("fs");
+var data = fs.readFileSync('./basics.js');
+var script = new vm.Script(data);
+script.runInThisContext();
 
 describe( 'Main', function() {
   var sandbox;
