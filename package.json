@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "karma start --single-run --no-auto-watch --browsers PhantomJS",
-    "start": "serve"
+    "start": "live-server"
   },
   "repository": {
     "type": "git",
@@ -32,8 +32,8 @@
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-sinon": "^1.0.4",
     "karma-sinon-chai": "^1.1.0",
+    "live-server": "^1.1.0",
     "phantomjs": "^1.9.18",
-    "serve": "^1.4.0",
     "sinon-chai": "^2.8.0"
   }
 }
